@@ -137,9 +137,9 @@ Complete these steps to create a VM:
 1. [Go to the VM page](#go-to-the-vm-page).
 2. Go to the `quick glance` sidebar (on the right).
 3. Go to `IP Address(es)`.
-4. You should see there `StudentsCourses01 - 10.93.24.98`.
-5. The `10.93.24.98` string is the [IP address](./computer-networks.md#ip-address) of the VM in a university network.
-6. We'll refer to this string as `<your-vm-ip-address>`.
+4. You should see there `StudentsCourses01` - [`<your-vm-ip-address>`](#your-vm-ip-address).
+
+   Example: `StudentsCourses01` - `10.93.24.1`
 
 ## Connect to the VM
 
