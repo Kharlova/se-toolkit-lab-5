@@ -257,27 +257,43 @@ Query logic:
 
 ### 1.8. Deploy and verify
 
-1. To pull your branch and restart the services on your VM,
+1. To navigate to the project directory on your VM,
 
    [run in the `VS Code Terminal`](../../../wiki/vs-code.md#run-a-command-in-the-vs-code-terminal):
 
    ```terminal
    cd se-toolkit-lab-5
+   ```
+
+2. To pull your branch,
+
+   [run in the `VS Code Terminal`](../../../wiki/vs-code.md#run-a-command-in-the-vs-code-terminal):
+
+   ```terminal
    git fetch origin && git checkout <task-branch> && git pull
-   docker compose --env-file .env.docker.secret up --build -d
    ```
 
    Replace [`<task-branch>`](../../../wiki/git-workflow.md#task-branch).
 
-2. [Open `Swagger UI`](../../../wiki/swagger.md#open-swagger-ui) at `http://<your-vm-ip-address>:42002/docs`.
+3. To restart the services,
 
-3. [Authorize in `Swagger UI`](../../../wiki/swagger.md#authorize-in-swagger-ui) with your [`API_KEY`](../../../wiki/dotenv-docker-secret.md#api_key) in [`.env.docker.secret`](../../../wiki/dotenv-docker-secret.md#what-is-envdockersecret).
+   [run in the `VS Code Terminal`](../../../wiki/vs-code.md#run-a-command-in-the-vs-code-terminal):
 
-4. Try each analytics endpoint with `lab=lab-04` (or any lab that has data).
+   ```terminal
+   docker compose --env-file .env.docker.secret up --build -d
+   ```
 
-5. Verify that each returns a `200` response with a `JSON` array.
+4. [Open `Swagger UI`](../../../wiki/swagger.md#open-swagger-ui) at `http://<your-vm-ip-address>:42002/docs`.
 
-6. To copy the [`.env.tests.e2e.example`](../../../.env.tests.e2e.example) file to the [`.env.tests.e2e.secret`](../../../wiki/dotenv-tests-e2e-secret.md#what-is-envtestse2esecret) file,
+   Replace [`<your-vm-ip-address>`](../../../wiki/vm.md#your-vm-ip-address).
+
+5. [Authorize in `Swagger UI`](../../../wiki/swagger.md#authorize-in-swagger-ui) with your [`API_KEY`](../../../wiki/dotenv-docker-secret.md#api_key) in [`.env.docker.secret`](../../../wiki/dotenv-docker-secret.md#what-is-envdockersecret).
+
+6. Try each analytics endpoint with `lab=lab-04` (or any lab that has data).
+
+7. Verify that each returns a `200` response with a `JSON` array.
+
+8. To copy the [`.env.tests.e2e.example`](../../../.env.tests.e2e.example) file to the [`.env.tests.e2e.secret`](../../../wiki/dotenv-tests-e2e-secret.md#what-is-envtestse2esecret) file,
 
    [run in the `VS Code Terminal`](../../../wiki/vs-code.md#run-a-command-in-the-vs-code-terminal):
 
@@ -285,20 +301,20 @@ Query logic:
    cp .env.tests.e2e.example .env.tests.e2e.secret
    ```
 
-7. [Open the file](../../../wiki/vs-code.md#open-the-file): `.env.tests.e2e.secret`.
+9. [Open the file](../../../wiki/vs-code.md#open-the-file): `.env.tests.e2e.secret`.
 
    Set the values:
 
    - [`API_BASE_URL`](../../../wiki/dotenv-tests-e2e-secret.md#api_base_url) — the URL of your deployed API (e.g., `http://<your-vm-ip-address>:42002`; replace [`<your-vm-ip-address>`](../../../wiki/vm.md#your-vm-ip-address)).
    - [`API_KEY`](../../../wiki/dotenv-tests-e2e-secret.md#api_key) — must match [`API_KEY`](../../../wiki/dotenv-docker-secret.md#api_key) in [`.env.docker.secret`](../../../wiki/dotenv-docker-secret.md#what-is-envdockersecret).
 
-8. To run the end-to-end tests against the deployed API,
+10. To run the end-to-end tests against the deployed API,
 
-   [run in the `VS Code Terminal`](../../../wiki/vs-code.md#run-a-command-in-the-vs-code-terminal):
+    [run in the `VS Code Terminal`](../../../wiki/vs-code.md#run-a-command-in-the-vs-code-terminal):
 
-   ```terminal
-   uv run poe test-e2e
-   ```
+    ```terminal
+    uv run poe test-e2e
+    ```
 
 ### 1.9. Finish the task
 
